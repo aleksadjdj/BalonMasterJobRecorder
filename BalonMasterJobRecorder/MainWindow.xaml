@@ -5,18 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BalonMasterJobRecorder"
         mc:Ignorable="d"
-        FontSize="18" FontFamily="Segoe UI Light"
-        Title="Balon Master Job Recorder" Height="800" Width="800" Background="#FFE6E6E6" WindowStartupLocation="CenterScreen" >
-    
-    
-    <Grid Background="#FFF1F1F1">
+        ResizeMode="CanMinimize"
+        FontSize="16" FontFamily="Segoe UI Light"
+        Title="Balon Master Job Recorder" Height="600" Width="700" WindowStartupLocation="CenterScreen" >
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFD6D6D6" Offset="0"/>
+            <GradientStop Color="#FFB4A8B9" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
@@ -39,23 +41,29 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="36" Margin="10">Date:</TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="2" FontSize="36" Margin="10">Store:</TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="3" FontSize="36" Margin="10">Dimension:</TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="4" FontSize="36" Margin="10">Color:</TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="5" FontSize="36" Margin="10">Description:</TextBlock>
-        <TextBlock Grid.Column="1" Grid.Row="6" FontSize="36"></TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1"  Margin="10" HorizontalAlignment="Right">Job Date:</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="2"  Margin="10" HorizontalAlignment="Right">Store Location:</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="3"  Margin="10" HorizontalAlignment="Right">Dimension:</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="4"  Margin="10" HorizontalAlignment="Right">Color:</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="5"  Margin="10" HorizontalAlignment="Right">Description:</TextBlock>
+        <TextBlock Grid.Column="3" Grid.Row="3"  Margin="10" HorizontalAlignment="Center" FontFamily="Segoe UI Semibold">kom</TextBlock>
+        <TextBlock Grid.Column="2" Grid.Row="3"  Margin="10" HorizontalAlignment="Center" FontFamily="Segoe UI Semibold">X</TextBlock>
 
-        <TextBox x:Name="dateTextBox" Grid.Column="2" Grid.Row="1" FontSize="36" FontWeight="SemiBold" Width="300" Margin="10" MaxLength="10" TabIndex="1"/>
-        <TextBox x:Name="dimensionTextBox" Grid.Column="2" Grid.Row="3" FontSize="36" FontWeight="SemiBold" Width="300" Margin="10" MaxLength="50" TabIndex="3"/>
-        <TextBox  x:Name="descriptionTextBox" Grid.Column="2" Grid.Row="5" FontSize="20" FontWeight="SemiBold" Width="300" Margin="10" Grid.RowSpan="5" TextWrapping="Wrap"  MaxLength="250" TabIndex="5"/>
+
+        <TextBox x:Name="dateTextBox" Grid.Column="2" Grid.Row="1" FontWeight="SemiBold" Width="300" Margin="10" MaxLength="10" TabIndex="1"/>
+        <TextBox x:Name="dimensionTextBox" Grid.Column="2" Grid.Row="3" FontWeight="SemiBold" Width="120" HorizontalAlignment="Left" Margin="10" MaxLength="10" TabIndex="3"/>
+        <TextBox x:Name="dimensionTextBox2" Grid.Column="2" Grid.Row="3" FontWeight="SemiBold" Width="120" HorizontalAlignment="Right" Margin="10" MaxLength="10" TabIndex="4"/>
+        <TextBox x:Name="numberTimesTextBox" Grid.Column="3" Grid.Row="3" FontWeight="SemiBold" Width="80" HorizontalAlignment="Left" Margin="10" MaxLength="10" TabIndex="5"/>
         
-        <ListBox x:Name="storeListBox" Grid.Column="2" Grid.Row="2" FontSize="36" Margin="10" TabIndex="2">
+        <TextBox x:Name="descriptionTextBox" Grid.Column="2" Grid.Row="5" FontWeight="SemiBold" Width="300" Height="200" Margin="10"  TextWrapping="Wrap" MaxLength="250" TabIndex="7"/>
+        
+
+        <ListBox x:Name="storeListBox" Grid.Column="2" Grid.Row="2" Margin="10" TabIndex="2">
             <ListBoxItem IsSelected="True">Zarkovo</ListBoxItem>
             <ListBoxItem>Centar</ListBoxItem>
         </ListBox>
 
-        <ComboBox x:Name="colorComboBox" Grid.Column="2" Grid.Row="4" IsEditable="True" FontSize="20" Margin="10"  TabIndex="4">
+        <ComboBox x:Name="colorComboBox" Grid.Column="2" Grid.Row="4" IsEditable="True" Margin="10"  TabIndex="6">
             <ComboBoxItem Content="Bela" IsSelected="true"/>
             <ComboBoxItem Content="Crna" Background="Black" Foreground="White"/>
             <ComboBoxItem Content="Crvena" Background="Red"/>
@@ -63,16 +71,16 @@
             <ComboBoxItem Content="Plava" Background="Blue"/>
             <ComboBoxItem Content="Roze" Background="Pink"/>
             <ComboBoxItem Content="Siva" Background="Gray"/>
-            <ComboBoxItem Content="Srebrna" Background="Silver"/>
+            <ComboBoxItem Content="SREBRNA" Background="Silver"/>
             <ComboBoxItem Content="Zelena" Background="Green"/>
-            <ComboBoxItem Content="Zlatna" Background="Gold"/>
+            <ComboBoxItem Content="ZLATNA" Background="Gold"/>
             <ComboBoxItem Content="Zuta" Background="Yellow"/>
         </ComboBox>
 
-        <Button x:Name="submitButton" Content="Submit" FontSize="36" Grid.Column="3" Grid.Row="7" Margin="10" TabIndex="6" Click="SubmitButton_Click"/>
-        <Button x:Name="showData" Content="Show Data" FontSize="36" Grid.Column="3" Grid.Row="9" Margin="10" TabIndex="7" Click="ShowData_Click"/>
+        <Button x:Name="submitButton" Content="Submit" Width="200"  Height="50" Grid.Column="2" Grid.Row="10" TabIndex="8" Click="SubmitButton_Click"/>
+        <Button x:Name="showData" Content="Show Data" Width="200" Height="50" Grid.Column="3" Grid.Row="10" Margin="10" TabIndex="9" Click="ShowData_Click"/>
 
 
-        <Image Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" Source="/res/BalonMasterLogo.png" Width="200"/>
+        <Image Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" Source="/res/BalonMasterLogo.png" Width="180"/>
     </Grid>
 </Window>

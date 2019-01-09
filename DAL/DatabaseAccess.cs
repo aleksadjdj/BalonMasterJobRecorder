@@ -70,58 +70,48 @@ namespace DAL
 
     public class IO
     {
-        public void StartProcess(string filePath)
+        private readonly string _fileName  = "BalonDataResults.html";
+        private readonly string _fullPath;
+
+        public IO()
         {
-            System.Diagnostics.Process proc = new System.Diagnostics.Process
+            _fullPath  = String.Concat(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "/", _fileName);
+        }
+
+        public bool StartProcess()
+        {
+            Process proc = new Process
             {
                 EnableRaisingEvents = false,
             };
-            proc.StartInfo.FileName = filePath;
+            proc.StartInfo.FileName = _fullPath;
 
             try
             {
                 proc.Start();
+                return true;
             }
-            catch (Exception ex)
+            catch
             {
-                Trace.Write(ex);
+                return false;
             }
         }
 
-        public void SaveListToHTMLFile(List<Ballon> ballons)
+        public bool SaveListToHTMLFile(string data)
         {
-            string fileName = Guid.NewGuid() + "_dbData.html";
-            string fullPath = String.Concat(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "/", fileName);
-
-            using (var file = new StreamWriter(fullPath, true))
+            using (var file = new StreamWriter(_fullPath, false))
             {
-                file.WriteLine("<!DOCTYPE html>");
-                file.WriteLine("<html><body>");
-                file.WriteLine("<table style=\"width: 100%\" border=\"1\">");
-                file.WriteLine("<tr>");
-                file.WriteLine("<th>Datum</th>");
-                file.WriteLine("<th>Radnja</th>");
-                file.WriteLine("<th>Dimenzija</th>");
-                file.WriteLine("<th>Boja</th>");
-                file.WriteLine("<th>Opis</th>");
-                file.WriteLine("<th>Datum unosa</th>");
-                file.WriteLine("</tr>");
-
-                foreach (var b in ballons)
+                try
                 {
-                    file.WriteLine("<tr>");
-                    file.WriteLine($"<td>{b.Date}</td>");
-                    file.WriteLine($"<td>{b.Store}</td>");
-                    file.WriteLine($"<td>{b.Dimension}</td>");
-                    file.WriteLine($"<td>{b.Color}</td>");
-                    file.WriteLine($"<td>{b.Description}</td>");
-                    file.WriteLine($"<td>{b.QueryInputDate}</td>");
-                    file.WriteLine("</tr>");
+                    file.WriteLine(data);
+                    return true;
                 }
-                file.WriteLine("</table></html></body>");
+                catch
+                {
+                    return false;
+                }
+               
             }
-
-            StartProcess(fullPath);
         }
     }
 }
