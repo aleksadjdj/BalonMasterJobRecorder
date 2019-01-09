@@ -81,6 +81,6 @@
         <Button x:Name="showData" Content="Show Data" Width="200" Height="50" Grid.Column="3" Grid.Row="10" Margin="10" TabIndex="9" Click="ShowData_Click"/>
 
 
-        <Image Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" Source="/res/BalonMasterLogo.png" Width="180"/>
+        <Image Grid.Row="1" Grid.Column="3" Grid.RowSpan="2" Source="/res/BalonMasterLogo.png" Width="200" Height="70"/>
     </Grid>
 </Window>

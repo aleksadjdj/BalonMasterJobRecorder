@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 using DAL;
 using Model;
@@ -7,8 +8,8 @@ namespace Logic
 {
     public class BalonLogic
     {
-        private DatabaseAccess _dataAccess = new DatabaseAccess();
-        private IO _io = new IO();
+        private readonly DatabaseAccess _dataAccess = new DatabaseAccess();
+        private readonly IO _io = new IO();
 
         public bool TestDBConnection()
         {
@@ -21,9 +22,18 @@ namespace Logic
 
         }
 
-        public void Write(Ballon balon)
+        public void Write(string date, string store, string dimension, string color, string description)
         {
-            _dataAccess.WriteData(balon);
+            _dataAccess.WriteData(new Ballon
+            {
+                Date = date,
+                Store = store,
+                Dimension = dimension,
+                Color = color,
+                Description = description,
+                QueryInputDate = DateTime.Now
+            });
+
         }
 
         public bool LunchHtmlFile()
@@ -66,5 +76,4 @@ namespace Logic
             return result;
         }
     }
-    
 }
