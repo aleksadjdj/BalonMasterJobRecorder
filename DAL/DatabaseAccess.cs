@@ -9,11 +9,9 @@ namespace DAL
         {
             using (var connection = new BallonContext())
             {
-                if (connection.Database.Exists())
-                    return true;
-                else
-                    return false;
+                var result = connection.Database.Exists();
 
+                return result;
             }
         }
 
@@ -35,17 +33,15 @@ namespace DAL
             }
         }
 
-        public List<Ballon> Read()
+        public IEnumerable<Ballon> Read()
         {
-            var ballonList = new List<Ballon>();
             using (var db = new BallonContext())
             {
                 foreach (var item in db.Ballon)
                 {
-                    ballonList.Add(item);
+                    yield return item;
                 }
             }
-            return ballonList;
         }
     }
 }

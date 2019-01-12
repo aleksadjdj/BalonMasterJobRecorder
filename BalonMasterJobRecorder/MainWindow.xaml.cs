@@ -76,11 +76,18 @@ namespace BalonMasterJobRecorder
             if(result == true)
             {
                var result2 = _balonLogic.LunchHtmlFile();
+
                if(result2 == false)
                     MessageBox.Show("Error: Can't open HTML file!", "ERROR");
             }
             else
-                MessageBox.Show("Error: Can't creating HTML file!", "ERROR");
+                MessageBox.Show("Error: Can't create/save HTML file!", "ERROR");
+        }
+
+        private void DateButton_Click(object sender, RoutedEventArgs e)
+        {
+            dateTextBox.Text = "";
+            dateTextBox.Text = DateTime.Now.ToShortDateString();
         }
     }
 }

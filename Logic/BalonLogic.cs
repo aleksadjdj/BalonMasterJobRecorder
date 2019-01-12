@@ -15,11 +15,7 @@ namespace Logic
         {
             var result = _dataAccess.IsServerConnected();
 
-            if (result)
-                return true;
-            else return 
-                    false;
-
+            return result;
         }
 
         public bool Write(string date, string store, string dimension, string color, string description)
@@ -45,7 +41,7 @@ namespace Logic
 
         public bool CreateHTMLFile()
         {
-            List<Ballon> ballons = _dataAccess.Read();
+            IEnumerable<Ballon> ballons = _dataAccess.Read();
             var sb = new StringBuilder();
 
             sb.Append("<!DOCTYPE html>");
@@ -74,6 +70,7 @@ namespace Logic
             sb.Append("</table></html></body>");
 
             var result = _io.SaveListToHTMLFile(sb.ToString());
+
             return result;
         }
     }
