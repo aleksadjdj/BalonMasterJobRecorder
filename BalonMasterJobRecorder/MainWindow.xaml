@@ -50,7 +50,7 @@
         <TextBlock Grid.Column="2" Grid.Row="3"  Margin="10" HorizontalAlignment="Center" FontFamily="Segoe UI Semibold">X</TextBlock>
 
 
-        <TextBox x:Name="dateTextBox" Grid.Column="2" Grid.Row="1" FontWeight="SemiBold" Width="300" Margin="10" MaxLength="10" TabIndex="1"/>
+        <TextBox x:Name="dateTextBox" Grid.Column="2" Grid.Row="1" FontWeight="SemiBold" Width="300" Margin="10" MaxLength="12" TabIndex="1"/>
         <TextBox x:Name="dimensionTextBox" Grid.Column="2" Grid.Row="3" FontWeight="SemiBold" Width="120" HorizontalAlignment="Left" Margin="10" MaxLength="10" TabIndex="3"/>
         <TextBox x:Name="dimensionTextBox2" Grid.Column="2" Grid.Row="3" FontWeight="SemiBold" Width="120" HorizontalAlignment="Right" Margin="10" MaxLength="10" TabIndex="4"/>
         <TextBox x:Name="numberTimesTextBox" Grid.Column="3" Grid.Row="3" FontWeight="SemiBold" Width="80" HorizontalAlignment="Left" Margin="10" MaxLength="10" TabIndex="5"/>

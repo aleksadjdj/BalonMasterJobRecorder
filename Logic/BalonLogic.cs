@@ -22,9 +22,9 @@ namespace Logic
 
         }
 
-        public void Write(string date, string store, string dimension, string color, string description)
+        public bool Write(string date, string store, string dimension, string color, string description)
         {
-            _dataAccess.WriteData(new Ballon
+            var result = _dataAccess.Write(new Ballon
             {
                 Date = date,
                 Store = store,
@@ -34,6 +34,7 @@ namespace Logic
                 QueryInputDate = DateTime.Now
             });
 
+            return result;
         }
 
         public bool LunchHtmlFile()
@@ -44,7 +45,7 @@ namespace Logic
 
         public bool CreateHTMLFile()
         {
-            List<Ballon> ballons = _dataAccess.ReadData();
+            List<Ballon> ballons = _dataAccess.Read();
             var sb = new StringBuilder();
 
             sb.Append("<!DOCTYPE html>");

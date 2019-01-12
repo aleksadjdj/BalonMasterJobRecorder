@@ -8,7 +8,6 @@ namespace Model
     public class Ballon
     {
         [Key]
-        [Column(Order = 0)]
         public int ID                   { get; set; }
 
         public string Date              { get; set; }
