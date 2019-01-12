@@ -86,7 +86,7 @@ namespace BalonMasterJobRecorder
 
         private void DateButton_Click(object sender, RoutedEventArgs e)
         {
-            dateTextBox.Text = "";
+            dateTextBox.Text = String.Empty;
             dateTextBox.Text = DateTime.Now.ToShortDateString();
         }
     }
