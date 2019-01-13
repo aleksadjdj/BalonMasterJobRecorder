@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Model
 {
-    [Table("BalonDatabase")]
+    [Table("Balloons")]
     public class Ballon
     {
         [Key]
-        public int ID                   { get; set; }
+        public int Id                   { get; set; }
 
         public string Date              { get; set; }
         public string Store             { get; set; }

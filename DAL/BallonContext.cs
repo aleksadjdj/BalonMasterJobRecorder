@@ -3,7 +3,6 @@ using System.Data.Entity;
 
 namespace DAL
 {
-    // *** CONFIGURATION FOR DB ***
     //public class BallonConfiguration : EntityTypeConfiguration<Ballon>
     //{
     //    public BallonConfiguration()
@@ -15,9 +14,8 @@ namespace DAL
 
     public class BallonContext : DbContext
     {
-        public DbSet<Ballon> Ballon { get; set; }
+        public DbSet<Ballon> Balloons { get; set; }
 
-        // *** CONFIGURATION FOR DB ***
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{
         //    modelBuilder.Configurations.Add(new BallonConfiguration());

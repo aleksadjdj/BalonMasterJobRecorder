@@ -21,7 +21,7 @@ namespace DAL
             {
                 try
                 {
-                    db.Ballon.Add(ballon);
+                    db.Balloons.Add(ballon);
                     db.SaveChanges();
                 }
                 catch
@@ -37,7 +37,7 @@ namespace DAL
         {
             using (var db = new BallonContext())
             {
-                foreach (var item in db.Ballon)
+                foreach (var item in db.Balloons)
                 {
                     yield return item;
                 }

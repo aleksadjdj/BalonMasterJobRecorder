@@ -44,11 +44,12 @@ namespace BalonMasterJobRecorder
             if (result == true)
                 ClearTextBox();
             else
-                MessageBox.Show("Error: Can't write to database!");
+                MessageBox.Show("Error: Can't write to database!", "ERROR");
 
         }
 
-        private void GetInputData(out string date, out string store, out string dimension, out string color, out string description)
+        private void GetInputData(out string date, out string store, out string dimension, 
+                                    out string color, out string description)
         {
             date = dateTextBox.Text.Replace('-', '.');
             var storeSelectedItem = storeListBox.SelectedItem as ListBoxItem;
