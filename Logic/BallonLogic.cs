@@ -6,7 +6,7 @@ using Model;
 
 namespace Logic
 {
-    public class BalonLogic
+    public class BallonLogic
     {
         private readonly DatabaseAccess _dataAccess = new DatabaseAccess();
         private readonly IO _io = new IO();

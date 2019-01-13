@@ -12,7 +12,7 @@ namespace BalonMasterJobRecorder
 {
     public partial class MainWindow : Window
     {
-        private readonly BalonLogic _balonLogic = new BalonLogic();
+        private readonly BallonLogic _balonLogic = new BallonLogic();
 
         public MainWindow()
         {
