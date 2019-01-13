@@ -36,6 +36,12 @@ namespace BalonMasterJobRecorder
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            if((dimensionTextBox.Text == String.Empty) && (dimensionTextBox2.Text == String.Empty) && (descriptionTextBox.Text == String.Empty))
+            {
+                MessageBox.Show("Dimension or Description, text box are empty!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
             GetInputData(out string date, out string store, out string dimension,
                          out string color, out string description);
 
