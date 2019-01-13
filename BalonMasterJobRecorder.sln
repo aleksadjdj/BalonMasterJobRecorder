@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalonMasterJobRecorder", "BalonMasterJobRecorder\BalonMasterJobRecorder.csproj", "{6CFBFA4B-CA55-417E-8191-6C42994CE6DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gui", "BalonMasterJobRecorder\Gui.csproj", "{6CFBFA4B-CA55-417E-8191-6C42994CE6DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{6B689303-8569-4B34-B812-95E2C8E130ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{2A6FCF35-7600-4132-8286-0EACC37E4B00}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dal", "DAL\Dal.csproj", "{2A6FCF35-7600-4132-8286-0EACC37E4B00}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{DFD4461C-C5FB-42B1-987B-DA1094D701C1}"
 EndProject
