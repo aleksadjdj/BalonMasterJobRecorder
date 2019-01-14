@@ -12,12 +12,13 @@ namespace BalonMasterJobRecorder
 {
     public partial class MainWindow : Window
     {
-        private readonly BallonLogic _balonLogic = new BallonLogic();
+        private readonly BallonLogic _ballonLogic;
 
         public MainWindow()
         {
             InitializeComponent();
 
+            _ballonLogic = new BallonLogic();
             WindowLoaded();
             dateTextBox.Text = DateTime.Now.ToShortDateString();
             dateTextBox.Focus();
@@ -25,11 +26,11 @@ namespace BalonMasterJobRecorder
 
         private void WindowLoaded()
         {
-            var result = _balonLogic.TestDBConnection();
+            var result = _ballonLogic.TestConnection();
             
             if(result == false)
             {
-                MessageBox.Show("Error: Can't connect to DB", "ERROR");
+                MessageBox.Show("Can't connect to DB", "ERROR");
                 this.Close();
             }
         }
@@ -45,12 +46,12 @@ namespace BalonMasterJobRecorder
             GetInputData(out string date, out string store, out string dimension,
                          out string color, out string description);
 
-            var result = _balonLogic.Write(date, store, dimension, color, description);
+            var result = _ballonLogic.Write(date, store, dimension, color, description);
 
             if (result == true)
                 ClearTextBox();
             else
-                MessageBox.Show("Error: Can't write to database!", "ERROR");
+                MessageBox.Show("Can't write to database!", "ERROR");
 
         }
 
@@ -79,16 +80,16 @@ namespace BalonMasterJobRecorder
 
         private void ShowData_Click(object sender, RoutedEventArgs e)
         {
-            var result = _balonLogic.CreateHTMLFile();
+            var result = _ballonLogic.CreateHTMLFile();
             if(result == true)
             {
-               var result2 = _balonLogic.LunchHtmlFile();
+               var result2 = _ballonLogic.LunchHtmlFile();
 
                if(result2 == false)
-                    MessageBox.Show("Error: Can't open HTML file!", "ERROR");
+                    MessageBox.Show("Can't open HTML file!", "ERROR");
             }
             else
-                MessageBox.Show("Error: Can't create/save HTML file!", "ERROR");
+                MessageBox.Show("Can't create/save HTML file!", "ERROR");
         }
 
         private void DateButton_Click(object sender, RoutedEventArgs e)

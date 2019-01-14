@@ -3,19 +3,19 @@ using System.Collections.Generic;
 
 namespace DAL
 {
-    public class DatabaseAccess
+    public class Database
     {
-        public bool IsServerConnected()
+        public bool TestDBConnection()
         {
-            using (var connection = new BallonContext())
+            using (var db = new BallonContext())
             {
-                var result = connection.Database.Exists();
+                var result = db.Database.Exists();
 
                 return result;
             }
         }
 
-        public bool Write(Ballon ballon)
+        public bool WriteToDb(Ballon ballon)
         {
             using (var db = new BallonContext())
             {
@@ -33,7 +33,7 @@ namespace DAL
             }
         }
 
-        public IEnumerable<Ballon> Read()
+        public IEnumerable<Ballon> ReadFromDb()
         {
             using (var db = new BallonContext())
             {

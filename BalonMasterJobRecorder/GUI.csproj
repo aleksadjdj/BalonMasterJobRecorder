@@ -120,10 +120,6 @@
       <Project>{dfd4461c-c5fb-42b1-987b-da1094d701c1}</Project>
       <Name>Logic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{6b689303-8569-4b34-b812-95e2c8e130ed}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="res\BalonMasterLogo.png" />

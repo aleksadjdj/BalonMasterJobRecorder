@@ -8,19 +8,25 @@ namespace Logic
 {
     public class BallonLogic
     {
-        private readonly DatabaseAccess _dataAccess = new DatabaseAccess();
-        private readonly IO _io = new IO();
+        private readonly Database _dataAccess;
+        private readonly IO _io;
 
-        public bool TestDBConnection()
+        public BallonLogic()
         {
-            var result = _dataAccess.IsServerConnected();
+            _dataAccess = new Database();
+            _io = new IO();
+        }
+
+        public bool TestConnection()
+        {
+            var result = _dataAccess.TestDBConnection();
 
             return result;
         }
 
         public bool Write(string date, string store, string dimension, string color, string description)
         {
-            var result = _dataAccess.Write(new Ballon
+            var result = _dataAccess.WriteToDb(new Ballon
             {
                 Date = date,
                 Store = store,
@@ -35,13 +41,14 @@ namespace Logic
 
         public bool LunchHtmlFile()
         {
-            var result = _io.StartProcess();
+            var result = _io.OpenHtmlFile();
             return result;
         }
 
         public bool CreateHTMLFile()
         {
-            IEnumerable<Ballon> ballons = _dataAccess.Read();
+            IEnumerable<Ballon> ballons = _dataAccess.ReadFromDb();
+
             var sb = new StringBuilder();
 
             sb.Append("<!DOCTYPE html>");
@@ -69,7 +76,7 @@ namespace Logic
             }
             sb.Append("</table></html></body>");
 
-            var result = _io.SaveListToHTMLFile(sb.ToString());
+            var result = _io.SaveTableAsHTMLFile(sb.ToString());
 
             return result;
         }
