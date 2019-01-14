@@ -37,11 +37,9 @@ namespace BalonMasterJobRecorder
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            if((dimensionTextBox.Text == String.Empty) && (dimensionTextBox2.Text == String.Empty) && (descriptionTextBox.Text == String.Empty))
-            {
-                MessageBox.Show("Dimension or Description, text box are empty!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            if (SimpleInputCheck() == false)
                 return;
-            }
 
             GetInputData(out string date, out string store, out string dimension,
                          out string color, out string description);
@@ -53,6 +51,35 @@ namespace BalonMasterJobRecorder
             else
                 MessageBox.Show("Can't write to database!", "ERROR");
 
+        }
+
+        private bool SimpleInputCheck()
+        {
+            if (dateTextBox.Text == String.Empty)
+            {
+                MessageBox.Show("Job date text box empty!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
+            if (dimensionTextBox.Text == String.Empty)
+            {
+                MessageBox.Show("Width text box empty!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
+            if (dimensionTextBox2.Text == String.Empty)
+            {
+                MessageBox.Show("Height text box empty!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
+            if (descriptionTextBox.Text == String.Empty)
+            {
+                MessageBox.Show("Description text box empty!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                return false;
+            }
+
+            return true;
         }
 
         private void GetInputData(out string date, out string store, out string dimension, 
@@ -81,15 +108,17 @@ namespace BalonMasterJobRecorder
         private void ShowData_Click(object sender, RoutedEventArgs e)
         {
             var result = _ballonLogic.CreateHTMLFile();
-            if(result == true)
+            if (result == true)
             {
-               var result2 = _ballonLogic.LunchHtmlFile();
+                var result2 = _ballonLogic.LunchHtmlFile();
 
-               if(result2 == false)
+                if (result2 == false)
                     MessageBox.Show("Can't open HTML file!", "ERROR");
             }
             else
+            {
                 MessageBox.Show("Can't create/save HTML file!", "ERROR");
+            }
         }
 
         private void DateButton_Click(object sender, RoutedEventArgs e)
