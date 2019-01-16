@@ -30,7 +30,7 @@ namespace BalonMasterJobRecorder
             
             if(result == false)
             {
-                MessageBox.Show("Can't connect to DB", "ERROR");
+                MessageBox.Show("Can't connect to Database!", "ERROR");
                 this.Close();
             }
         }
@@ -47,7 +47,7 @@ namespace BalonMasterJobRecorder
             var result = _ballonLogic.Write(date, store, dimension, color, description);
 
             if (result == true)
-                ClearTextBox();
+                ClearTextBoxes();
             else
                 MessageBox.Show("Can't write to database!", "ERROR");
 
@@ -97,7 +97,7 @@ namespace BalonMasterJobRecorder
             description = descriptionTextBox.Text;
         }
 
-        private void ClearTextBox()
+        private void ClearTextBoxes()
         {
             dimensionTextBox.Text = String.Empty;
             dimensionTextBox2.Text = String.Empty;
