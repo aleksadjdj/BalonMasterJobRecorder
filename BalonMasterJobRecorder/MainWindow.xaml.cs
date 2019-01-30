@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using Logic;
@@ -105,9 +106,13 @@ namespace BalonMasterJobRecorder
             descriptionTextBox.Text = String.Empty;
         }
 
-        private void ShowData_Click(object sender, RoutedEventArgs e)
+        private async void ShowData_Click(object sender, RoutedEventArgs e)
         {
-            var result = _ballonLogic.CreateHTMLFile();
+            var task = new Task<bool>(_ballonLogic.CreateHTMLFile);
+            task.Start();
+
+            var result = await task;
+
             if (result == true)
             {
                 var result2 = _ballonLogic.LunchHtmlFile();
